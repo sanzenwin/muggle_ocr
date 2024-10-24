@@ -4,38 +4,11 @@ on:
     tags:
       - 'v[0-9]+.[0-9]+.[0-9]+*'
 jobs:
-  publish-win:
-    uses: sanzenwin/workflows/.github/workflows/pypi-release-publish-private.yml@main
-    with:
-      os: windows-latest
-      plat_name: win-amd64
-    permissions:
-      contents: write
-    secrets: inherit
-  publish-macos:
-    needs: publish-win
-    uses: sanzenwin/workflows/.github/workflows/pypi-release-publish-private.yml@main
-    with:
-      os: macos-latest
-      plat_name: macosx-11-0-arm64
-    permissions:
-      contents: write
-    secrets: inherit
-  publish-ubuntu:
-    needs: publish-macos
+  publish:
     uses: sanzenwin/workflows/.github/workflows/pypi-release-publish-private.yml@main
     with:
       os: ubuntu-latest
-      plat_name: manylinux1-x86-64
-    permissions:
-      contents: write
-    secrets: inherit
-  publish-ubuntu2:
-    needs: publish-ubuntu
-    uses: sanzenwin/workflows/.github/workflows/pypi-release-publish-private.yml@main
-    with:
-      os: ubuntu-latest
-      plat_name: manylinux2014-aarch64
+      plat_name: ""
     permissions:
       contents: write
     secrets: inherit
