@@ -13,6 +13,7 @@ jobs:
       contents: write
     secrets: inherit
   publish-macos:
+    needs: publish-win
     uses: sanzenwin/workflows/.github/workflows/pypi-release-publish-private.yml@main
     with:
       os: macos-latest
@@ -21,6 +22,7 @@ jobs:
       contents: write
     secrets: inherit
   publish-ubuntu:
+    needs: publish-macos
     uses: sanzenwin/workflows/.github/workflows/pypi-release-publish-private.yml@main
     with:
       os: ubuntu-latest
@@ -29,6 +31,7 @@ jobs:
       contents: write
     secrets: inherit
   publish-ubuntu2:
+    needs: publish-ubuntu
     uses: sanzenwin/workflows/.github/workflows/pypi-release-publish-private.yml@main
     with:
       os: ubuntu-latest
